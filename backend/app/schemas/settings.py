@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class ChangePasswordRequest(BaseModel):
@@ -14,6 +14,6 @@ class UpdateSettingsRequest(BaseModel):
 class SettingsResponse(BaseModel):
     id: int
     full_name: str
-    email: EmailStr
+    email: str
     role: str
     email_notifications_enabled: bool

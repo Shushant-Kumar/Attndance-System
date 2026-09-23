@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, EmailStr, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 class StudentBase(BaseModel):
@@ -9,7 +9,7 @@ class StudentBase(BaseModel):
     department: str
     year: str
     section: str
-    email: Optional[EmailStr] = None
+    email: Optional[str] = None
     phone: Optional[str] = None
 
     @field_validator("email", "phone", mode="before")
@@ -36,7 +36,7 @@ class StudentUpdate(BaseModel):
     department: Optional[str] = None
     year: Optional[str] = None
     section: Optional[str] = None
-    email: Optional[EmailStr] = None
+    email: Optional[str] = None
     phone: Optional[str] = None
     is_active: Optional[bool] = None
 

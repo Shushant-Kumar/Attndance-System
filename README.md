@@ -205,6 +205,7 @@ The container `attendance_postgres` will be running on port `5432`.
 
 There are no production default credentials. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`,
 and `ADMIN_FULL_NAME` in the backend environment, then run `python -m app.seed`.
+The admin email is only used as a login identifier; the application does not send email.
 
 ---
 
