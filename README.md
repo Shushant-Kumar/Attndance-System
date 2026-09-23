@@ -333,6 +333,8 @@ attendance-system/
 │   │   ├── database.py           # SQLAlchemy engine & session factory
 │   │   ├── main.py               # FastAPI application entrypoint
 │   │   └── seed.py               # Database initialization & default admin seeder
+│   ├── database/
+│   │   └── schema.sql            # PostgreSQL/Neon reference schema
 │   ├── .env.example              # Backend environment template
 │   └── requirements.txt          # Python package dependencies
 ├── frontend/
@@ -347,7 +349,7 @@ attendance-system/
 │   ├── package.json              # Frontend npm dependencies
 │   ├── tailwind.config.js        # Tailwind CSS configuration
 │   └── vite.config.js            # Vite bundler & API reverse proxy configuration
-├── dataset/                      # Local storage for captured facial image crops
+├── dataset/                      # Local development storage for captured images
 ├── docker-compose.yml            # Docker Compose configuration for PostgreSQL
 └── README.md                     # Project documentation
 ```
@@ -359,6 +361,7 @@ attendance-system/
 Create a Neon PostgreSQL database and copy its pooled connection string into
 Render's `DATABASE_URL` variable. Keep `sslmode=require` in the connection URL.
 The application creates its SQLAlchemy tables when `python -m app.seed` runs.
+The matching reference SQL is stored at `backend/database/schema.sql`.
 
 ### Render backend
 
