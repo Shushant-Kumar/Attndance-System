@@ -3,6 +3,7 @@ fastapi
 uvicorn[standard]
 SQLAlchemy
 psycopg2-binary
+psycopg[binary]
 cryptography
 python-jose[cryptography]
 passlib[bcrypt]
