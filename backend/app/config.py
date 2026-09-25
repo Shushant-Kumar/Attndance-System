@@ -64,7 +64,7 @@ class Settings:
         )
         self.FACE_DATASET_DIR = os.getenv(
             "FACE_DATASET_DIR",
-            "../dataset"
+            "/data/dataset" if self.ENV == "production" else "../dataset"
         )
         self.YOLO_FACE_MODEL = os.getenv(
             "YOLO_FACE_MODEL",

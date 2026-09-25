@@ -199,6 +199,40 @@ The container `attendance_postgres` will be running on port `5432`.
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+### 4. Deploy the Backend to Railway
+
+The repository includes `railway.toml` for deploying the FastAPI backend from
+the repository root. Create a Railway service from this repository and add the
+following variables in the service settings:
+
+```env
+ENV=production
+DATABASE_URL=<your PostgreSQL connection string>
+JWT_SECRET_KEY=<random value with at least 32 characters>
+JWT_ALGORITHM=HS256
+JWT_EXPIRE_MINUTES=120
+CORS_ORIGINS=https://<your-vercel-domain>
+ADMIN_EMAIL=<administrator email>
+ADMIN_PASSWORD=<administrator password with at least 12 characters>
+ADMIN_FULL_NAME=System Administrator
+```
+
+Set `VITE_API_URL` in Vercel to the Railway public URL, without the `/api`
+suffix, then redeploy the frontend. The frontend adds `/api` itself.
+
+For persistent face-capture images, attach a Railway volume mounted at
+`/data`. The production default stores captures under `/data/dataset`.
+
+After the first deployment, initialize the database and create the admin from
+the Railway service shell:
+
+```bash
+cd backend && python -m app.seed
+```
+
+Use `/api/health` as the service health check. Railway supplies `$PORT`, which
+is consumed by the start command in `railway.toml`.
+
 ---
 
 ## 🔑 Administrator Account
