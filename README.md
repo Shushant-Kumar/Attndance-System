@@ -201,9 +201,9 @@ The container `attendance_postgres` will be running on port `5432`.
 
 ### 4. Deploy the Backend to Railway
 
-The repository includes `railway.toml` for deploying the FastAPI backend from
-the repository root. Create a Railway service from this repository and add the
-following variables in the service settings:
+The `backend` directory includes `railway.toml` for deploying the FastAPI
+service. Create a Railway service from this repository, set its root directory
+to `/backend`, and add the following variables in the service settings:
 
 ```env
 ENV=production
@@ -227,7 +227,7 @@ After the first deployment, initialize the database and create the admin from
 the Railway service shell:
 
 ```bash
-cd backend && python -m app.seed
+python -m app.seed
 ```
 
 Use `/api/health` as the service health check. Railway supplies `$PORT`, which
