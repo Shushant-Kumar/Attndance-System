@@ -1,0 +1,4 @@
+[phases.setup]
+nixPkgs = ["...", "libGL", "libxcb", "glib"]
+nixLibs = ["...", "libGL", "libxcb", "glib"]
+aptPkgs = ["...", "libgl1", "libglib2.0-0", "libxcb1"]
